@@ -1,0 +1,24 @@
+<script>
+var variables = {
+    title: 'Hello',
+    image: 'https://4.bp.blogspot.com/-j49xTVdZe7g/TVnmq6phXxI/AAAAAAAABpA/Pm45FErBfQQ/s1600/hopkins%2Bduck.jpg'
+  };
+  
+  var template = [
+    '<h1>',
+    variables.title,
+    '</h1>',
+    '<img width="80%" src="',
+    variables.image,
+    '">'
+  ].join('');
+  
+  // Alt. 2: Document write ("old school")
+  var doc = document.querySelector('#document-write-test').contentWindow.document;
+  doc.open();
+  doc.write(template);
+  doc.close();
+    </script>
+
+
+    <iframe id="document-write-test" frameborder="0" width="300px" height="300px"></iframe>
