@@ -29,9 +29,7 @@
       var x = dom.get('iframe?tag=0')
       var y = (x.contentWindow || x.contentDocument)
       if (y.document)y = y.document
-      y.open()
-      y.write(code.innerText)
-      y.close()
+      y.body.innerHTML = code.innerText
     }
   </script>
 </body>
