@@ -14,7 +14,7 @@
   <nav class="bcblack h3 bs2">
     <figure class="mh100p">
       <a class="b0" href="./" key="0"><img src="https://www.front.nu/assets/img/logo.png" /></a>
-      <button class="bcwhite black pa r1 t05 z08" onclick="test()">RUN</button>
+      <button class="bcwhite black pa r1 t05 z08" onclick="editorPreview()">RUN</button>
     </figure>
   </nav>
   <aside class="bcblack rh">
@@ -23,16 +23,6 @@
   <main>
     <iframe class="w100 h100 bw0"></iframe>
   </main>
-
-  <script>
-    function test() {
-      var code = dom.get('code?tag=0')
-      var x = dom.get('iframe?tag=0')
-      var y = (x.contentWindow || x.contentDocument)
-      if (y.document)y = y.document
-      y.body.innerHTML = code.innerText
-    }
-  </script>
 </body>
 
 </html>
