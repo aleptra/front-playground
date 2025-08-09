@@ -1,28 +1,64 @@
-<!DOCTYPE html>
-<html debug="true">
+<!doctype html>
+<html lang="en">
 
 <head>
-  <title>Front Playground</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="version" content="1.0.0">
+  <script
+    src="https://cdn.front.nu/nightly/front.js"
+    module="globalize;data;navigate;keyboard;screen"
+    plugin="syntaxhighlighting"
+    var="api"
+    conf="debug:false;debugLocalhost:true;varsDir:assets/json/vars;storageKey:code;frontSrcLocal:http://localhost/front/front.js"
+    globalize-conf="folder:assets/json/locales"
+    syntaxhighlighting-conf=""
+    navigate-conf="startpage:experimental/app/code;startpageLocal:app/code">
+  </script>
   <link type="text/css" href="https://cdn.front.nu/dist/front.css" rel="stylesheet">
-  <link type="text/css" href="https://cdn.front.nu/dist/design/front/theme/front.css?4" rel="stylesheet">
-  <link type="image/x-icon" href="https://www.front.nu/favicon.ico" rel="shortcut icon">
-  <script src="https://cdn.front.nu/dist/front.js" plug="formatify;editor"></script>
+  <link rel="stylesheet" href="assets/css/app.css"> <!-- Will be removed in future. -->
+  <link rel="stylesheet" href="https://cdn.front.nu/dist/design/front/theme/front.css"> <!-- Will be removed in future. -->
+  <title>Playground</title>
 </head>
 
-<body>
-  <nav class="bcblack h3 bs2">
-    <figure class="mh100p">
-      <a class="b0" href="./" key="0"><img src="https://www.front.nu/assets/img/logo.png" /></a>
-      <button class="bcwhite black pa r1 t05 z08" onclick="editorPreview()">RUN</button>
-    </figure>
-  </nav>
-  <aside class="bcblack rh">
-    <section class="w50r toggleable xl_dn" include="code.html"></section>
+<body class="light">
+  <div id="navloader" class="navloader pa t0 w100 bcblack03 h2px" hide><div class="bcblack08"></div></div>
+  <header class="topbar h4 pr1 bcblack white- white shade1">
+    <button click="toggle" clicktargetfield="aside[0]" class="ml1 dark p05 br50 hover-"><i class="icon24">≡</i></button>
+    <a class="ml1 mr1" href="./" globalize-get="code" uppercase bold>Code</a>
+    <button click="sethtml:#preview:#code" class="mr05 fr dark p05 br50 hover-"><i class="icon16">&#9658;</i></button>
+  </header>
+
+  <aside resize="horizontal">
+    <code
+      id="code"
+      class="markup lavender br0 mt0 mh100"
+      name="note"
+      bindasset="apikey:api.api_key;url:api.notes.url"
+      bindquery="id:id"
+      onvaluechange="data-reqpatch"
+      data-src="{url}?id=eq.{id:1}"
+      data-get="0.note"
+      data-ongetload="sethtml:#preview:#code"
+      data-onfinish="syntaxhighlighting--set:#code"
+      data-onsuccess="sethtml:#preview:#code"
+      data-header="apikey:{apikey}"
+      data-reqpatch="{url}?id=eq.{id:1}&limit=1&order=id"
+      data-enctype="application/json"
+      whitespace="pre-wrap"
+      contenteditable="plaintext-only"
+      spellcheck="false"
+      minwidth="50vw"
+      keyboard-translate="Tab:  "
+      disable-keyboard-untranslate="Backspace:  "
+      font="monospace"
+    >
+    </code>
   </aside>
   <main>
-    <iframe class="w100 h100 bw0"></iframe>
+    <iframe class="w100 h100 bw0 bcwhite" id="preview" src="includes/preview.html"></iframe>
   </main>
+  <aside></aside>
+  <footer></footer>
 </body>
 
 </html>
