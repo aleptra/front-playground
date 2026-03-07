@@ -21,22 +21,24 @@
 </head>
 
 <body class="light">
-  <div id="navloader" class="navloader pa t0 w100 bcblack03 h2px" hide><div class="bcblack08"></div></div>
+  <div id="navloader" class="navloader pa t0 w100 bcblack03 h2px" hide>
+    <div class="bcblack08"></div>
+  </div>
   <header class="topbar h4 pr1 bcblack white- white shade1">
     <button click="toggle" clicktargetfield="aside[0]" class="ml1 dark p05 br50 hover-"><i class="icon24">≡</i></button>
     <a class="ml1 mr1" href="./" globalize-get="code" uppercase bold>Code</a>
     <button click="sethtml:#preview:#code" class="mr05 fr dark p05 br50 hover-"><i class="icon16">&#9658;</i></button>
   </header>
 
-  <aside resize="horizontal">
+  <aside resize="horizontal" width="50vw">
     <code
       id="code"
       class="markup lavender br0 mt0 mh100"
       name="note"
       bindasset="apikey:api.api_key;url:api.notes.url"
-      bindquery="id:id"
+      bindquery="id:id;slug:slug"
       onvaluechange="data-reqpatch"
-      data-src="{url}?id=eq.{id:1}"
+      data-src="{url}?or=(id.eq.{id:1},slug.eq.{slug})"
       data-get="0.note"
       data-ongetload="sethtml:#preview:#code"
       data-onfinish="syntaxhighlighting--set:#code"
@@ -47,18 +49,20 @@
       whitespace="pre"
       contenteditable="plaintext-only"
       spellcheck="false"
-      minwidth="50vw"
       keyboard-translate="Tab:  "
       disable-keyboard-untranslate="Backspace:  "
-      font="monospace"
-    >
+      font="monospace">
     </code>
   </aside>
-  <main>
-    <iframe class="w100 h100 bw0 bcwhite" id="preview" src="includes/preview.html"></iframe>
+  <main width="100%">
+    <iframe
+      id="preview"
+      src="includes/preview.html"
+      height="100%"
+      bgcolor="white"
+      border="0">
+    </iframe>
   </main>
-  <aside></aside>
-  <footer></footer>
 </body>
 
 </html>
