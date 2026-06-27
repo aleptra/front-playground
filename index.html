@@ -7,7 +7,7 @@
   <script
     src="https://cdn.front.nu/nightly/front.js"
     module="globalize;data;navigate;keyboard;screen"
-    plugin="syntaxhighlighting"
+    plugin="syntaxhighlighting;clipboard"
     var="api"
     conf="debug:false;debugLocalhost:true;varsDir:assets/json/vars;storageKey:code;frontSrcLocal:http://localhost/front/front.js"
     globalize-conf="folder:assets/json/locales"
@@ -27,9 +27,9 @@
   <header class="topbar h4 pr1 bcblack white- white shade1">
     <ul flex flexdirection="column" id="menu" hide bgcolor="white" color="black" boxshadow="0 2px 8px rgba(0,0,0,0.2)" padding="0.5rem 0"
       radius="4px" absolute zindex="9999" top="100px">
-      <li click="alert:[Edit];hide:#menu" padding="0.5rem 1rem" mouseover="bgcolor:[#f0f0f0]"
+      <li click="syntaxhighlighting--format:#code;hide:#menu" padding="0.5rem 1rem" mouseover="bgcolor:[#f0f0f0]"
         mouseout="bgcolor:[inherit]" cursor="pointer" color="black">Format Code</li>
-      <li click="alert:[Copy];hide:#menu" padding="0.5rem 1rem" mouseover="bgcolor:[#f0f0f0]"
+      <li click="clipboard--copy:#code;hide:#menu" padding="0.5rem 1rem" mouseover="bgcolor:[#f0f0f0]"
         mouseout="bgcolor:[inherit]" cursor="pointer" color="black">Copy</li>
     </ul>
 
